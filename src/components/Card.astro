@@ -1,0 +1,92 @@
+---
+const {
+  url = "#",
+  cardimage = "",
+  cardimagealt = "",
+
+  badgenyt = "false",
+  badgerabat = "false",
+  badgerabatsats = "",
+  badgefaapladser = "false",
+
+  holdnavn = "",
+  tidspunkt = "",
+  aldersgruppe = "",
+  niveau = "",
+  pladserpaaholdet = "",
+  lokale = "",
+  holdbeskrivelse = "",
+
+  underviserfoto = "",
+  underviserfotoalt = "",
+  undervisernavn = "",
+  underviserinfo = "",
+} = Astro.props;
+---
+
+<article class="card border-blue-500 border-2 @container">
+  <a href="#">
+    <section class="flex flex-col justify-between">
+      <header class="relative">
+        <img
+          src={cardimage}
+          alt={cardimagealt}
+          class="object-cover h-9xl w-full"
+        />
+        {
+          badgenyt === "true" && (
+            <div class="badge absolute bg-blue-500 top-xs p-xs text-white">
+              Nyt hold!
+            </div>
+          )
+        }
+        {
+          badgerabat === "true" && (
+            <div class="badge absolute bg-red-500 top-xs right-[0px] p-xs text-white">
+              {badgerabatsats}
+            </div>
+          )
+        }
+        {
+          badgefaapladser === "true" && (
+            <div class="badge absolute bg-yellow-500 bottom-xs right-[0px] p-xs">
+              Kun få pladser tilbage!
+            </div>
+          )
+        }
+      </header>
+    </section>
+    <section class="flex flex-col gap-xs p-s">
+      <h2 class="text-m">{holdnavn}</h2>
+      <div class="flex flex-col gap-xs @md:flex-row @md:gap-4xl">
+        <div>
+          <p>Tidspunkt: {tidspunkt}</p>
+          <p>Aldersgruppe: {aldersgruppe}</p>
+          <p>Niveau: {niveau}</p>
+        </div>
+        <div>
+          <p>Deltagere: {pladserpaaholdet}</p>
+          <p>Lokale: {lokale}</p>
+        </div>
+      </div>
+      <p>
+        {holdbeskrivelse}
+      </p>
+    </section>
+    <section
+      class="flex flex-row items-center gap-xs p-s border-t-2 border-blue-500"
+    >
+      <img
+        src={underviserfoto}
+        alt={underviserfotoalt}
+        class="object-cover h-xl w-xl aspect-[3/3] rounded-full"
+      />
+      <div class="flex flex-col">
+        <p class="font-bold">Underviser: {undervisernavn}</p>
+        <p>
+          {underviserinfo}
+        </p>
+      </div>
+    </section>
+  </a>
+</article>
